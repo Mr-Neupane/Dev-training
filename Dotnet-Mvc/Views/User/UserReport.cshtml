@@ -1,0 +1,29 @@
+﻿@model List<UserModel>
+
+@{
+    ViewData["Title"] = "Add User";
+}
+
+<table class="table table-bordered table-striped table-hover" style="border-collapse: collapse">
+    <thead>
+    <tr>
+        <td>User Name</td>
+        <td>User Email</td>
+        <td>User Address</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    
+        @foreach (var u in Model)
+        {
+            <tr>
+            <td>@u.UserName</td>
+            <td>@u.Email</td>
+            <td>@u.Address</td>
+            <td><a asp-action="Edit" asp-route-id="@u.Id" class="btn btn-primary">Edit</a></td>
+            </tr>
+        }
+   
+    </tbody>
+</table>
