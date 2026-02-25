@@ -133,4 +133,26 @@ public class UserController : Controller
             throw;
         }
     }
+
+
+    public async Task<IActionResult> Add(AddUserVm vm)
+    {
+        try
+        {
+            var dto = new NewUseDto
+            {
+                UserName = vm.Name.Trim(),
+                Email = vm.Email,
+                Address = vm.Address,
+                Password = vm.Pass
+            };
+            await _userService.CreateUserAsync(dto);
+            return RedirectToAction("UserReport");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 }
